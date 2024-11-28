@@ -20,31 +20,54 @@ injectCountdown();
 function injectCountdown() {
   const timeTarget = new Date(2028, 11, 7);
   const countdownElement = document.createElement("div");
+  const body = document.querySelector<HTMLDivElement>("#body")!;
   countdownElement.id = "countdown";
   countdownElement.classList.add("mx-auto");
-  document
-    .querySelector<HTMLDivElement>("#body")!
-    .appendChild(countdownElement);
+  body.appendChild(countdownElement);
 
   setInterval(
     (countdownElement: HTMLDivElement, timeTarget: number) => {
       const now = new Date();
       const duration = intervalToDuration({ start: now, end: timeTarget });
 
-      const previousPreciseTimeDiv =
-        document.querySelector<HTMLDivElement>("#time");
+      const previous = document.querySelector<HTMLDivElement>("#time");
 
-      if (previousPreciseTimeDiv) {
-        countdownElement.removeChild(previousPreciseTimeDiv);
+      if (previous) {
+        removeChildRecursively(countdownElement, previous);
       }
 
       const timeDiv = document.createElement("div");
       timeDiv.id = "time";
-      timeDiv.innerText = JSON.stringify(duration);
       countdownElement.appendChild(timeDiv);
+      addDateElements(timeDiv, duration);
     },
     1000,
     countdownElement,
     timeTarget,
   );
+}
+
+function addDateElements(
+  parentElement: HTMLDivElement,
+  dateData: {
+    years?: number;
+    days?: number;
+    hours?: number;
+    minutes?: number;
+    seconds?: number;
+  },
+) {
+  Object.entries(dateData).forEach(([key, val], i) => {
+    const elem = document.createElement("div");
+    elem.id = `date-item-${i}`;
+    elem.textContent = `${val} ${key}`;
+    parentElement.appendChild(elem);
+  });
+}
+
+function removeChildRecursively(parent: HTMLElement, child: HTMLElement) {
+  while (child.firstChild) {
+    removeChildRecursively(child, child.firstChild as HTMLElement);
+  }
+  parent.removeChild(child);
 }
