@@ -5,8 +5,8 @@ import { intervalToDuration } from "date-fns";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div id='body' class="container flex flex-col mx-auto align-middle">
-    <h1 class="2xl:text-9xl xl:text-8xl md:text-4xl sm: text-xl mx-auto mb-6 text-[#fcba03] font-bold">When will Trump leave?</h1>
-    <img id="trump_image" class="mx-auto rounded-lg 2xl:size-fit xl:size-fit md:size-96 sm:size-64 mb-6"/>
+    <h1 class="2xl:text-9xl xl:text-8xl md:text-4xl sm: text-xl mx-auto mb-6 text-neutral font-bold">When will Trump leave?</h1>
+    <img id="trump_image" alt="Trump's mug" loading="lazy" class="mx-auto rounded-lg 2xl:size-fit xl:size-fit md:size-96 sm:size-64 mb-6"/>
     <div class="mx-auto 2xl:text-6xl xl:text-6xl md:text-4xl sm: text-xl mb-6">Well, hopefully in</div>
   </div>
 `;
