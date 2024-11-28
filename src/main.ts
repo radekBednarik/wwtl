@@ -1,45 +1,62 @@
-import './style.css'
-import imagePoutyTrump from './images/trump_mug_pouty.png'
-import { formatDistanceToNow } from 'date-fns'
+import "./style.css";
+import imagePoutyTrump from "./images/trump_mug_pouty.png";
+import {
+  differenceInDays,
+  differenceInHours,
+  differenceInMonths,
+  differenceInMinutes,
+  differenceInSeconds,
+  differenceInYears,
+} from "date-fns";
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
+document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div id='body' class="container flex flex-col mx-auto align-middle">
     <h1 class="2xl:text-9xl xl:text-8xl md:text-4xl sm: text-xl mx-auto mb-6">When will Trump leave?</h1>
     <img id="trump_image" class="mx-auto rounded-lg 2xl:size-fit xl:size-fit md:size-96 sm:size-64 mb-6"/>
     <div class="mx-auto 2xl:text-6xl xl:text-6xl md:text-4xl sm: text-xl mb-6">Well, hopefully in</div>
   </div>
-`
+`;
 
-const trumpImage = document.querySelector<HTMLImageElement>('#trump_image')
+const trumpImage = document.querySelector<HTMLImageElement>("#trump_image");
 if (trumpImage) {
-  trumpImage.src = imagePoutyTrump
+  trumpImage.src = imagePoutyTrump;
 }
 
-injectCountdown()
+injectCountdown();
 
 function injectCountdown() {
-  const timeTarget = new Date(2028, 11, 7)
-  const countdownElement = document.createElement('div')
-  countdownElement.id = 'countdown'
-  countdownElement.classList.add('mx-auto')
+  const timeTarget = new Date(2028, 11, 7);
+  const countdownElement = document.createElement("div");
+  countdownElement.id = "countdown";
+  countdownElement.classList.add("mx-auto");
+  document
+    .querySelector<HTMLDivElement>("#body")!
+    .appendChild(countdownElement);
 
-  setInterval((countdownElement: HTMLDivElement, timeTarget: number) => {
-    const distance = formatDistanceToNow(timeTarget, { includeSeconds: true })
-    const previousTimeDiv = document.querySelector<HTMLDivElement>('#time')
+  setInterval(
+    (countdownElement: HTMLDivElement, timeTarget: number) => {
+      const now = new Date();
+      const years = differenceInYears(timeTarget, now);
+      const months = differenceInMonths(timeTarget, now);
+      const days = differenceInDays(timeTarget, now);
+      const hours = differenceInHours(timeTarget, now);
+      const minutes = differenceInMinutes(timeTarget, now);
+      const seconds = differenceInSeconds(timeTarget, now);
 
-    if (previousTimeDiv) {
-      countdownElement.removeChild(previousTimeDiv)
-    }
+      const previousPreciseTimeDiv =
+        document.querySelector<HTMLDivElement>("#time");
 
-    const timeDiv = document.createElement('div')
-    timeDiv.id = "time"
-    timeDiv.innerText = distance
+      if (previousPreciseTimeDiv) {
+        countdownElement.removeChild(previousPreciseTimeDiv);
+      }
 
-    countdownElement.appendChild(timeDiv)
-    document.querySelector<HTMLDivElement>('#body')!.appendChild(countdownElement!)
-
-
-  }, 1000, countdownElement, timeTarget)
+      const timeDiv = document.createElement("div");
+      timeDiv.id = "time";
+      timeDiv.innerText = `${years} years or ${months} months or ${days} days or ${hours} hours or ${minutes} minutes or ${seconds} seconds`;
+      countdownElement.appendChild(timeDiv);
+    },
+    1000,
+    countdownElement,
+    timeTarget,
+  );
 }
-
-
