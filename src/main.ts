@@ -22,7 +22,7 @@ function injectCountdown() {
   const countdownElement = document.createElement("div");
   const body = document.querySelector<HTMLDivElement>("#body")!;
   countdownElement.id = "countdown";
-  countdownElement.classList.add("mx-auto");
+  countdownElement.classList.add();
   body.appendChild(countdownElement);
 
   setInterval(
@@ -38,6 +38,7 @@ function injectCountdown() {
 
       const timeDiv = document.createElement("div");
       timeDiv.id = "time";
+      timeDiv.classList.add("flex", "flex-row", "justify-around");
       countdownElement.appendChild(timeDiv);
       addDateElements(timeDiv, duration);
     },
