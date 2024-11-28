@@ -1,10 +1,11 @@
 import "./style.css";
 import imagePoutyTrump from "./images/trump_mug_pouty.png";
+import usFlagMotif from "./images/us_flag_motif.png";
 import { intervalToDuration } from "date-fns";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div id='body' class="container flex flex-col mx-auto align-middle">
-    <h1 class="2xl:text-9xl xl:text-8xl md:text-4xl sm: text-xl mx-auto mb-6">When will Trump leave?</h1>
+    <h1 class="2xl:text-9xl xl:text-8xl md:text-4xl sm: text-xl mx-auto mb-6 text-[#fcba03] font-bold">When will Trump leave?</h1>
     <img id="trump_image" class="mx-auto rounded-lg 2xl:size-fit xl:size-fit md:size-96 sm:size-64 mb-6"/>
     <div class="mx-auto 2xl:text-6xl xl:text-6xl md:text-4xl sm: text-xl mb-6">Well, hopefully in</div>
   </div>
@@ -22,7 +23,6 @@ function injectCountdown() {
   const countdownElement = document.createElement("div");
   const body = document.querySelector<HTMLDivElement>("#body")!;
   countdownElement.id = "countdown";
-  countdownElement.classList.add();
   body.appendChild(countdownElement);
 
   setInterval(
@@ -38,7 +38,17 @@ function injectCountdown() {
 
       const timeDiv = document.createElement("div");
       timeDiv.id = "time";
-      timeDiv.classList.add("flex", "flex-row", "justify-around");
+      timeDiv.classList.add(
+        "flex",
+        "flex-row",
+        "justify-around",
+        "m-10",
+        "border",
+        "rounded-lg",
+        "bg-center",
+        "bg-cover",
+      );
+      timeDiv.style.backgroundImage = `url(${usFlagMotif})`;
       countdownElement.appendChild(timeDiv);
       addDateElements(timeDiv, duration);
     },
@@ -61,7 +71,15 @@ function addDateElements(
   Object.entries(dateData).forEach(([key, val], i) => {
     const elem = document.createElement("div");
     elem.id = `date-item-${i}`;
-    elem.textContent = `${val} ${key}`;
+    elem.innerHTML = `${val} ${key}`;
+    elem.classList.add(
+      "text-6xl",
+      "text-white",
+      "font-bold",
+      "bg-black",
+      "bg-opacity-50",
+      "my-24",
+    );
     parentElement.appendChild(elem);
   });
 }
