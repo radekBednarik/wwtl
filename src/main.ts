@@ -49,6 +49,7 @@ function injectCountdown() {
         "bg-cover",
       );
       timeDiv.style.backgroundImage = `url(${usFlagMotif})`;
+
       countdownElement.appendChild(timeDiv);
       addDateElements(timeDiv, duration);
     },
@@ -73,12 +74,21 @@ function addDateElements(
     elem.id = `date-item-${i}`;
     elem.innerHTML = `${val} ${key}`;
     elem.classList.add(
-      "text-6xl",
-      "text-white",
+      "2xl:text-6xl",
+      "xl:text-4xl",
+      "md:text-2xl",
+      "sm:text-base",
+      "text-black",
       "font-bold",
-      "bg-black",
-      "bg-opacity-50",
-      "my-24",
+      "2xl:my-16",
+      "xl:my-14",
+      "md:my-10",
+      "sm:my-10",
+      "bg-white",
+      "bg-opacity-70",
+      "p-2",
+      "rounded-lg",
+      "shadow-lg",
     );
     parentElement.appendChild(elem);
   });
