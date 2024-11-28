@@ -1,13 +1,6 @@
 import "./style.css";
 import imagePoutyTrump from "./images/trump_mug_pouty.png";
-import {
-  differenceInDays,
-  differenceInHours,
-  differenceInMonths,
-  differenceInMinutes,
-  differenceInSeconds,
-  differenceInYears,
-} from "date-fns";
+import { intervalToDuration } from "date-fns";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div id='body' class="container flex flex-col mx-auto align-middle">
@@ -36,12 +29,7 @@ function injectCountdown() {
   setInterval(
     (countdownElement: HTMLDivElement, timeTarget: number) => {
       const now = new Date();
-      const years = differenceInYears(timeTarget, now);
-      const months = differenceInMonths(timeTarget, now);
-      const days = differenceInDays(timeTarget, now);
-      const hours = differenceInHours(timeTarget, now);
-      const minutes = differenceInMinutes(timeTarget, now);
-      const seconds = differenceInSeconds(timeTarget, now);
+      const duration = intervalToDuration({ start: now, end: timeTarget });
 
       const previousPreciseTimeDiv =
         document.querySelector<HTMLDivElement>("#time");
@@ -52,7 +40,7 @@ function injectCountdown() {
 
       const timeDiv = document.createElement("div");
       timeDiv.id = "time";
-      timeDiv.innerText = `${years} years or ${months} months or ${days} days or ${hours} hours or ${minutes} minutes or ${seconds} seconds`;
+      timeDiv.innerText = JSON.stringify(duration);
       countdownElement.appendChild(timeDiv);
     },
     1000,
