@@ -23,6 +23,13 @@ function injectCountdown() {
   const countdownElement = document.createElement("div");
   const body = document.querySelector<HTMLDivElement>("#body")!;
   countdownElement.id = "countdown";
+  countdownElement.style.backgroundImage = `url(${usFlagMotif})`;
+  countdownElement.classList.add(
+    "bg-center",
+    "bg-cover",
+    "border",
+    "rounded-lg",
+  );
   body.appendChild(countdownElement);
 
   setInterval(
@@ -40,16 +47,16 @@ function injectCountdown() {
       timeDiv.id = "time";
       timeDiv.classList.add(
         "flex",
-        "flex-row",
+        "sm:flex-row",
+        "md:flex-row",
+        "xl:flex-row",
+        "2xl:flex-row",
+        "xsm:flex-col",
+        "2xsm:flex-col",
+        "3xsm:flex-col",
         "justify-around",
         "m-10",
-        "border",
-        "rounded-lg",
-        "bg-center",
-        "bg-cover",
       );
-      timeDiv.style.backgroundImage = `url(${usFlagMotif})`;
-
       countdownElement.appendChild(timeDiv);
       addDateElements(timeDiv, duration);
     },
