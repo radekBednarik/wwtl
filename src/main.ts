@@ -1,6 +1,6 @@
 import "./style.css";
-import imagePoutyTrump from "./images/trump_mug_pouty.png";
-import usFlagMotif from "./images/us_flag_motif.png";
+import imagePoutyTrump from "./images/trump_mug_pouty.webp";
+import usFlagMotif from "./images/us_flag_motif.webp";
 import { intervalToDuration } from "date-fns";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
