@@ -8,6 +8,17 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <h1 class="2xl:text-9xl xl:text-8xl md:text-4xl sm: text-xl mx-auto mb-6 text-neutral font-bold">When will Trump leave?</h1>
     <img id="trump_image" alt="Trump's mug" loading="lazy" class="mx-auto rounded-lg 2xl:size-fit xl:size-fit md:size-96 sm:size-64 mb-6"/>
     <div class="mx-auto 2xl:text-6xl xl:text-6xl md:text-4xl sm: text-xl mb-6">Well, hopefully in</div>
+    <div id="countdown-wrapper" class="mb-6"></div>
+    <footer class="flex flex-row justify-stretch">
+      <div class="italic">We are very much assuming that presidential election will happen on 
+        <strong>
+          <a href="https://w.wiki/CEYk" target="_blank" class="underline hover:no-underline">
+          7.11.2028
+          </a>
+        </strong>
+        .
+      </div>
+    </footer>
   </div>
 `;
 
@@ -21,7 +32,8 @@ injectCountdown();
 function injectCountdown() {
   const timeTarget = new Date(2028, 11, 7);
   const countdownElement = document.createElement("div");
-  const body = document.querySelector<HTMLDivElement>("#body")!;
+  const countdownWrapper =
+    document.querySelector<HTMLDivElement>("#countdown-wrapper")!;
   countdownElement.id = "countdown";
   countdownElement.style.backgroundImage = `url(${usFlagMotif})`;
   countdownElement.classList.add(
@@ -30,7 +42,7 @@ function injectCountdown() {
     "border",
     "rounded-lg",
   );
-  body.appendChild(countdownElement);
+  countdownWrapper.appendChild(countdownElement);
 
   setInterval(
     (countdownElement: HTMLDivElement, timeTarget: number) => {
