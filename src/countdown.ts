@@ -9,7 +9,13 @@ export function injectCountdown() {
     document.querySelector<HTMLDivElement>("#countdown-wrapper")!;
   countdownElement.id = "countdown";
   countdownElement.style.backgroundImage = `url(${usFlagMotif})`;
-  countdownElement.classList.add("bg-center", "bg-cover", "rounded-lg");
+  countdownElement.classList.add(
+    ...ptc(
+      "bg-center bg-cover rounded-lg",
+      "sm:py-1 xsm:py-1 2xsm:py-1 3xsm:py-1",
+      "sm:mx-2 xsm:mx-2 2xsm:mx-2 3xsm:mx-1 md:mx-10 lg:mx-10",
+    ),
+  );
   countdownWrapper.appendChild(countdownElement);
 
   setInterval(
@@ -29,7 +35,7 @@ export function injectCountdown() {
         ...ptc(
           "flex sm:flex-row md:flex-row xl:flex-row",
           "2xl:flex-row, xsm:flex-col, 2xsm:flex-col, 3xsm:flex-col",
-          "justify-around m-10",
+          "justify-around",
         ),
       );
       countdownElement.appendChild(timeDiv);
@@ -59,7 +65,8 @@ function addDateElements(
       ...ptc(
         "2xl:text-6xl xl:text-4xl md:text-2xl sm:text-base",
         "text-black font-bold 2xl:my-16 xl:my-14 md:my-10",
-        "sm:my-10 xsm:mb-2 2xsm:mb-2 3xsm:mb-2",
+        "sm:my-2 xsm:my-2 2xsm:my-2 3xsm:my-2",
+        "sm:mx-2 xsm:mx-2 2xsm:mx-2 3xsm:mx-2",
         "bg-white bg-opacity-70 p-2 rounded-lg shadow-lg",
       ),
     );
