@@ -3,7 +3,7 @@ import { intervalToDuration } from "date-fns";
 import { ptc } from "./utils";
 
 export function injectCountdown() {
-  const timeTarget = new Date(2028, 11, 7);
+  const timeTarget = new Date(2028, 10, 7, 0, 0, 0);
   const countdownElement = document.createElement("div");
   const countdownWrapper =
     document.querySelector<HTMLDivElement>("#countdown-wrapper")!;
@@ -63,7 +63,7 @@ function addDateElements(
     elem.innerHTML = `${val} ${key}`;
     elem.classList.add(
       ...ptc(
-        "2xl:text-6xl xl:text-4xl md:text-2xl sm:text-base",
+        "2xl:text-5xl xl:text-4xl lg:text-2xl md:text-lg sm:text-base",
         "text-black font-bold 2xl:my-16 xl:my-14 md:my-10",
         "sm:my-2 xsm:my-2 2xsm:my-2 3xsm:my-2",
         "sm:mx-2 xsm:mx-2 2xsm:mx-2 3xsm:mx-2",
