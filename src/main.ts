@@ -16,7 +16,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
           7.11.2028
           </a>
         </strong>
-        .
+        and Trump's term will expire at <strong>noon on January 20, 2029</strong>.
       </div>
       <div id="gh-logo" class="sm:mt-5 xsm:mt-5 2xsm:mt-5 3xsm:mt-5 md:my-auto">
         <a href="https://github.com/radekBednarik/wwtl" target="_blank" class="hover:underline">
