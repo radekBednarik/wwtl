@@ -1,5 +1,5 @@
 /**
- * Process tailwind classes to single tw valid string
+ * Process tailwind classes strings to single valid `<element>.classList.add()` argument.
  */
 export function ptc(...args: string[]) {
   return args
