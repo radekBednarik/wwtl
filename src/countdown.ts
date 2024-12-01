@@ -3,17 +3,48 @@ import { intervalToDuration } from "date-fns";
 import { ptc } from "./utils";
 
 export function injectCountdown() {
-  const timeTarget = new Date(2029, 0, 20, 12, 0, 0);
+  const timeTarget = new Date(2029, 0, 20, 12, 0, 0).getTime();
+  addCountdown(document.querySelector<HTMLDivElement>('#countdown-wrapper')!, timeTarget)
+  addBarOverlay(document.querySelector<HTMLDivElement>("#countdown")!, timeTarget)
+}
+
+function addBarOverlay(countdownWrapper: HTMLDivElement, timeTarget: number) {
+  const progressBar = document.createElement('div');
+  progressBar.id = "countdown-progress-bar";
+  progressBar.classList.add(
+    ...ptc("bg-white bg-opacity-0 h-full max-h-full absolute rounded-l-lg")
+  );
+
+  const overlay = document.createElement('div');
+  overlay.id = "countdown-bar-overlay";
+  overlay.classList.add(
+    ...ptc("bg-black bg-opacity-40 h-full max-h-full absolute rounded-lg")
+  );
+
+  const startDate = new Date(2024, 10, 5, 0, 0, 0).getTime();
+  const diff = timeTarget - startDate;
+  const now = new Date().getTime();
+  const progress = (((now - startDate) / diff) * 100).toFixed(2);
+
+  progressBar.style.width = `${progress}%`;
+  overlay.style.width = `${(100 - parseFloat(progress)).toFixed(2)}%`;
+  overlay.style.left = `${progress}%`;
+
+  countdownWrapper.appendChild(progressBar);
+  countdownWrapper.appendChild(overlay);
+
+}
+
+function addCountdown(countdownWrapper: HTMLDivElement, timeTarget: number) {
+
   const countdownElement = document.createElement("div");
-  const countdownWrapper =
-    document.querySelector<HTMLDivElement>("#countdown-wrapper")!;
   countdownElement.id = "countdown";
   countdownElement.style.backgroundImage = `url(${usFlagMotif})`;
   countdownElement.classList.add(
     ...ptc(
       "bg-center bg-cover rounded-lg",
-      "sm:py-1 xsm:py-1 2xsm:py-1 3xsm:py-1",
       "sm:mx-2 xsm:mx-2 2xsm:mx-2 3xsm:mx-1 md:mx-10 lg:mx-10",
+      "relative"
     ),
   );
   countdownWrapper.appendChild(countdownElement);
@@ -80,3 +111,5 @@ function removeChildRecursively(parent: HTMLElement, child: HTMLElement) {
   }
   parent.removeChild(child);
 }
+
+
