@@ -1,12 +1,17 @@
 import "./style.css";
 import { injectCountdown } from "./countdown";
-import { injectMugImage } from "./main-image";
 import { injectGithubLogo } from "./footer-image";
+import { injectMugImage } from "./main-image";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div id='body' class="container flex flex-col mx-auto align-middle">
     <h1 class="2xl:text-9xl xl:text-8xl md:text-4xl sm: text-xl mx-auto mb-6 text-neutral font-bold">When will Trump leave?</h1>
-    <img id="trump_image" alt="Trump's mug image in Pop art style." class="mx-auto rounded-lg 2xl:size-fit xl:size-fit md:size-96 sm:size-64 mb-6"/>
+    <div class="mx-auto 2xl:size-fit xl:size-fit md:size-96 sm:size-64 mb-6">
+      <a href="https://w.wiki/CXR" target="_blank">
+        <img id="trump_image" alt="Trump's mug image in Pop art style." class="rounded-lg glow-on-hover" />
+      </a>
+    </div>
+    
     <div class="mx-auto 2xl:text-6xl xl:text-6xl md:text-4xl sm: text-xl mb-6">Well, hopefully in</div>
     <div id="countdown-wrapper" class="mb-6"></div>
     <footer class="flex md:flex-row sm:flex-col xsm:flex-col 2xsm:flex-col 3xsm:flex-col justify-between sm:mx-2 xsm:mx-2 2xsm:mx-2 3xsm:mx-1 md:mx-10 lg:mx-10">
@@ -26,6 +31,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     </footer>
   </div>
 `;
+
 injectMugImage();
 injectCountdown();
 injectGithubLogo();
