@@ -18,7 +18,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <div class="italic">We are very much assuming that presidential elections will happen on 
         <strong>
           <a href="https://w.wiki/CEYk" target="_blank" class="underline hover:no-underline">
-          7.11.2028
+         November 7, 2028
           </a>
         </strong>
         and Trump's term will expire at <strong>noon on January 20, 2029</strong>.
