@@ -2,6 +2,3 @@
 User-agent: *
 Allow: /
 
-
-# Sitemap location
-Sitemap: https://whenwilltrumpleave.com/sitemap.xml
