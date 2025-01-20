@@ -30,7 +30,10 @@ function addBarOverlay(countdownWrapper: HTMLDivElement, timeTarget: number) {
 		...ptc("bg-black bg-opacity-40 h-full max-h-full absolute rounded-lg"),
 	);
 
-	const startDate = new Date(2025, 0, 20, 12, 0, 0).getTime();
+	const startDate = fromZonedTime(
+		new Date(2025, 0, 20, 12, 0, 0),
+		"America/New_York",
+	).getTime();
 	const diff = timeTarget - startDate;
 	const now = new Date().getTime();
 	const progress = (((now - startDate) / diff) * 100).toFixed(2);
