@@ -45,11 +45,7 @@ function addCountdown(countdownWrapper: HTMLDivElement, timeTarget: number) {
 	countdownElement.id = "countdown";
 	countdownElement.style.backgroundImage = `url(${usFlagMotif})`;
 	countdownElement.classList.add(
-		...ptc(
-			"bg-center bg-cover rounded-lg",
-			"sm:mx-2 xsm:mx-2 2xsm:mx-2 3xsm:mx-1 md:mx-10 lg:mx-10",
-			"relative",
-		),
+		...ptc("bg-center bg-cover rounded-lg", "relative", "lg:max-xl:mx-10"),
 	);
 	countdownWrapper.appendChild(countdownElement);
 
