@@ -1,9 +1,12 @@
 import { intervalToDuration } from "date-fns";
+import { fromZonedTime } from "date-fns-tz";
 import usFlagMotif from "./images/us_flag_motif.webp";
 import { ptc } from "./utils";
 
 export function injectCountdown() {
-	const timeTarget = new Date(2029, 0, 20, 12, 0, 0).getTime();
+	const targetDate = new Date(2029, 0, 20, 12, 0, 0);
+	const tzTargetDate = fromZonedTime(targetDate, "America/New_York");
+	const timeTarget = tzTargetDate.getTime();
 	addCountdown(
 		document.querySelector<HTMLDivElement>("#countdown-wrapper")!,
 		timeTarget,
@@ -27,7 +30,7 @@ function addBarOverlay(countdownWrapper: HTMLDivElement, timeTarget: number) {
 		...ptc("bg-black bg-opacity-40 h-full max-h-full absolute rounded-lg"),
 	);
 
-	const startDate = new Date(2024, 10, 5, 0, 0, 0).getTime();
+	const startDate = new Date(2025, 0, 20, 12, 0, 0).getTime();
 	const diff = timeTarget - startDate;
 	const now = new Date().getTime();
 	const progress = (((now - startDate) / diff) * 100).toFixed(2);
