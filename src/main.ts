@@ -16,7 +16,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     </div>
     
     <div id="countdown-wrapper" class="sm:my-2 md:my-10 w-full"></div>
-    <footer class="flex md:flex-row sm:flex-col xsm:flex-col 2xsm:flex-col 3xsm:flex-col justify-between sm:mx-2 xsm:mx-2 2xsm:mx-2 3xsm:mx-1 md:mx-10 lg:mx-10 my-10">
+    <footer class="flex xl:flex-row lg:flex-col md:flex-col sm:flex-col xsm:flex-col 2xsm:flex-col 3xsm:flex-col justify-between lg:max-xl:mx-10">
       <div class="italic">This countdown is very much assuming that presidential elections will happen on 
         <strong>
           <a href="https://w.wiki/CEYk" target="_blank" class="underline hover:no-underline">
