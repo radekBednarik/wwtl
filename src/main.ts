@@ -6,7 +6,7 @@ import imagePoutyTrump from "./images/trump_mug_pouty.webp?url";
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div id='body' class="container flex flex-col mx-auto">
     <div class="flex flex-row items-center justify-center gap-x-2 my-10 ">
-      <h1 class="2xl:text-7xl xl:text-7xl md:text-4xl sm:text-base xsm:text-xl mb-6 text-neutral font-bold text-left">When will Donald Trump<br/> leave the presidential office?</h1>
+      <h1 class="2xl:text-6xl xl:text-6xl md:text-3xl sm:text-base xsm:text-xl mb-6 text-neutral font-bold text-left">How long will it take <br/> Trump to leave the presidency?</h1>
       <a href="https://w.wiki/CXR" target="_blank">
         <img id="trump_image" src="${imagePoutyTrump}"
           alt="Trump's mug image in Pop art style."
