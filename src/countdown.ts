@@ -2,6 +2,7 @@ import { intervalToDuration } from "date-fns";
 import { fromZonedTime } from "date-fns-tz";
 import usFlagMotif from "./images/us_flag_motif.webp";
 import { ptc } from "./utils";
+import confetti from "canvas-confetti";
 
 export function injectCountdown() {
   const targetDate = new Date(2029, 0, 20, 12, 0, 0);
@@ -77,6 +78,23 @@ function addCountdown(countdownWrapper: HTMLDivElement, timeTarget: number) {
       );
       countdownElement.appendChild(timeDiv);
       addDateElements(timeDiv, duration);
+
+      // trigger confetti every time the duration.seconds is
+      // undefined on object - that means that minutes value was changed
+      if (duration.seconds === undefined) {
+        confetti({
+          particleCount: 200,
+          spread: 180,
+          angle: 90,
+          origin: { x: 0, y: 0.5 },
+        });
+        confetti({
+          particleCount: 200,
+          spread: 180,
+          angle: 90,
+          origin: { x: 1, y: 0.5 },
+        });
+      }
     },
     1000,
     countdownElement,
