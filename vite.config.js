@@ -1,4 +1,7 @@
 /** @type {import('vite').UserConfig} */
 export default {
-	server: {},
+  server: {},
+  build: {
+    sourcemap: true,
+  },
 };
